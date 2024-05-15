@@ -1,6 +1,6 @@
 from database.db import db
 
-class Usuarios(db.Model):
+class Usuario(db.Model):
     def to_dict(self):
         return {
             'id': self.id,

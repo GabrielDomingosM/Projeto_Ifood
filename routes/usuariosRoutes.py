@@ -1,5 +1,5 @@
-from controllers.usuariosController import usuariosController
+from controllers.usuariosController import usuarioController
 
-def usuariosRoute(app):
+def usuarioRoute(app):
     # Vou deixar só POST e GET por enquanto
-    app.route('/routes', methods=['POST', 'GET'])(usuariosController)
+    app.route('/routes', methods=['POST', 'GET'])(usuarioController)
