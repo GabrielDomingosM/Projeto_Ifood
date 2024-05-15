@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entregadores HTML</title>
+</head>
+<body>
+    <input type="text" id="nome" placeholder="Nome" name="nome"/>
+    <input type="text" id="cpf" placeholder="cpf" name="cpf"/>
+    <input type="text" id="telefone" placeholder="telefone" name="telefone"/>
+    <input type="text" id="idrestaurante" placeholder="ID restaurante" name="idrestaurante"/>
+    <button id="btnSend">Enviar</button>
+</body>
+<script>
+    function sendUser(){
+        var nome = document.getElementById('nome').value
+        var cpf = document.getElementById('cpf').value
+        var telefone = document.getElementById('telefone').value
+        var idrestaurante = document.getElementById('idrestaurante').value
+
+        var data = {
+            nome: nome,
+            cpf: cpf,
+            telefone: telefone,
+            idrestaurante : idrestaurante 
+        }
+
+        const response = fetch('http://localhost:3000/entregador', {
+            method: 'POST',
+            headers:{
+                'Content-Type' : 'Application/Json'
+            },
+            body: JSON.stringify(data)
+            
+        })
+    }
+
+    document.getElementById('btnSend').addEventListener('click', () => sendUser())
+</script>
+</html>

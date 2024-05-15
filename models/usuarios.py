@@ -8,7 +8,7 @@ class Usuarios(db.Model):
         }
     
     id = db.Column(db.Integer, primary_key = True, unique = True, nullable = False)
-    nome = db.Colum(db.String(100))
+    nome = db.Column(db.String(100))
 
     def __init__(self, nome):
         self.nome = nome
