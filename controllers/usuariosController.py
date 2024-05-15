@@ -1,13 +1,13 @@
 from flask import request
 from database.db import db
-from models.usuarios import Usuarios
+from models.usuarios import Usuario
 
-def usuariosController():
+def usuarioController():
     if request.method == "POST":
         try:
             data = request.get_json()
-            usuarios = Usuarios(data['nome'])
-            db.session.add(usuarios)
+            usuario = Usuario(data['nome'])
+            db.session.add(usuario)
             db.session.commit()
             return 'Usuario criado com sucesso', 200
         
@@ -17,8 +17,8 @@ def usuariosController():
 
     elif request.method == "GET":
         try:
-            data = Usuarios.query.all()
-            newData = {'usuarios': [usuarios.to_dict() for usuarios in data]}
+            data = Usuario.query.all()
+            newData = {'usuarios': [usuario.to_dict() for usuario in data]}
             return newData, 200
         
         except Exception as erro:
