@@ -2,6 +2,7 @@ from flask import Flask
 from database.db import db
 from routes.routeIndex import routeIndex
 from flask_cors import CORS
+
 class MyServer():
     def __init__(self) -> None:
         self.app = Flask(__name__)

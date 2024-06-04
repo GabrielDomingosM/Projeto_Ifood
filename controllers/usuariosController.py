@@ -5,8 +5,10 @@ from models.usuarios import Usuario
 def usuarioController():
     if request.method == "POST":
         try:
+            print(1)
             data = request.get_json()
-            usuario = Usuario(data['nome'])
+            print(data)
+            usuario = Usuario(data['nome'], data['cpf'], data['endereco'], data['telefone'])
             db.session.add(usuario)
             db.session.commit()
             return 'Usuario criado com sucesso', 200
