@@ -1,11 +1,17 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { useEffect, useState } from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from "@react-navigation/native";
+
+import CadEntregadores from './Screens/cadEntregadores';
 
 export default function App() {
+  const Stack = createStackNavigator();
   return (
-    <View style={styles.container}>
-      <Text>Doofi</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='CadEntragadores' component={CadEntregadores}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
