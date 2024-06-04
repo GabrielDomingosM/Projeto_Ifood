@@ -6,7 +6,8 @@ def entregadorController():
     if request.method == "POST":
         try:
             data = request.get_json()
-            entregador = Entregador(data['nome', 'cpf', 'telefone', 'idrestaurante'])
+            print(data)
+            entregador = Entregador(data['nome'], data['cpf'], data['telefone'], data['idrestaurante'])
             db.session.add(entregador)
             db.session.commit()
             return 'Usuario do entregador criado com sucesso', 200
