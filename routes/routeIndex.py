@@ -1,6 +1,8 @@
-from routes.usuariosRoutes import usuariosRoute
+from routes.usuariosRoutes import usuarioRoute
 from routes.entregadoresRoutes import entregadorRoute
-
+from routes.home import home
 def routeIndex(app):
-    usuariosRoute(app=app)
+    usuarioRoute(app=app)
     entregadorRoute(app=app)
+    home(app)
+    

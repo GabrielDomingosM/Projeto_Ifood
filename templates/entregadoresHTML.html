@@ -6,6 +6,7 @@
     <title>Entregadores HTML</title>
 </head>
 <body>
+    <h1>Cadastro de Entregadores</h1>
     <input type="text" id="nome" placeholder="Nome" name="nome"/>
     <input type="text" id="cpf" placeholder="cpf" name="cpf"/>
     <input type="text" id="telefone" placeholder="telefone" name="telefone"/>
@@ -18,7 +19,7 @@
         var cpf = document.getElementById('cpf').value
         var telefone = document.getElementById('telefone').value
         var idrestaurante = document.getElementById('idrestaurante').value
-
+        console.log(nome)
         var data = {
             nome: nome,
             cpf: cpf,
@@ -26,7 +27,7 @@
             idrestaurante : idrestaurante 
         }
 
-        const response = fetch('http://localhost:3000/entregador', {
+        const response = fetch('http://localhost:300/entregador', {
             method: 'POST',
             headers:{
                 'Content-Type' : 'Application/Json'

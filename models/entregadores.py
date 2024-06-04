@@ -11,7 +11,7 @@ class Entregador(db.Model):
         }
     
     id = db.Column(db.Integer, primary_key = True, unique = True, nullable = False)
-    idrestaurante = db.Column(db.Integer(5))
+    idrestaurante = db.Column(db.Integer)
     nome = db.Column(db.String(100))
     cpf = db.Column(db.String(20))
     telefone = db. Column(db.String(20))
