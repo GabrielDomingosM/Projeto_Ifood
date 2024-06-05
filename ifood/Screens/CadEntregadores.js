@@ -13,7 +13,7 @@ export default function CadEntregadores() {
 
     async function getEntregadores(){
         try {
-            const response = await axios.get("http://localhost:300/entregadores");
+            const response = await axios.get("http://localhost:3000/entregadores");
             setEntregadores(response.data.entregadores);
         } catch (error) {
             new Error(error);
