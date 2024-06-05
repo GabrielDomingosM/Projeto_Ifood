@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurantes HTML</title>
+</head>
+<body>
+    <h1>Cadastro de Restaurantes</h1>
+    <input type="text" id="nome" placeholder="Nome" name="nome"/>
+    <input type="text" id="telefone" placeholder="telefone" name="telefone"/>
+    <input type="text" id="endereco" placeholder="endereco" name="endereco"/>
+    <input type="text" id="cnpj" placeholder="cnpj" name="cnpj"/>
+    <input type="text" id="descricao" placeholder="descricao" name="descricao"/>
+    <button id="btnSend">Enviar</button>
+</body>
+<script>
+    function sendUser(){
+        var nome = document.getElementById('nome').value
+        var telefone = document.getElementById('telefone').value
+        var endereco = document.getElementById('endereco').value
+        var cnpj = document.getElementById('cnpj').value
+        var descricao = document.getElementById('descricao').value
+        console.log(nome)
+        var data = {
+            nome: nome,
+            telefone: telefone,
+            endereco: endereco,
+            cnpj : cnpj,
+            descricao: descricao
+        }
+
+        const response = fetch('http://localhost:300/restaurante', {
+            method: 'POST',
+            headers:{
+                'Content-Type' : 'Application/Json'
+            },
+            body: JSON.stringify(data)
+            
+        })
+    }
+
+    document.getElementById('btnSend').addEventListener('click', () => sendUser())
+</script>
+</html>
