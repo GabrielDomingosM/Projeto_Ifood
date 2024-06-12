@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets HTML</title>
+</head>
+<body>
+    <h1>Cadastro de Tickets</h1>
+    <input type="text" id="idrestaurante" placeholder="idrestaurante" name="idrestaurante"/>
+    <input type="text" id="identregador" placeholder="identregador" name="identregador"/>
+    <input type="text" id="idusuario" placeholder="idusuario" name="idusuario"/>
+    <input type="text" id="descricao" placeholder="descricao" name="descricao"/>
+    <button id="btnSend">"Comprar"</button>
+</body>
+<script>
+    function sendUser(){
+        var idrestaurante = document.getElementById('idrestaurante').value
+        var identregador = document.getElementById('identregador').value
+        var idusuario = document.getElementById('idusuario').value
+        var descricao = document.getElementById('descricao').value
+        console.log(descricao)
+        var data = {
+            idrestaurante: idrestaurante,
+            identregador: identregador,
+            idusuario: idusuario,
+            descricao: descricao
+        }
+
+        const response = fetch('http://localhost:300/ticket', {
+            method: 'POST',
+            headers:{
+                'Content-Type' : 'Application/Json'
+            },
+            body: JSON.stringify(data)
+            
+        })
+    }
+
+    document.getElementById('btnSend').addEventListener('click', () => sendUser())
+</script>
+</html>
