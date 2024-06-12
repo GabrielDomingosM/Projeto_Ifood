@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIckets</title>
+</head>
+<body>
+    
+    <script>
+        // JINJA Flask + JS
+        var data = {{ data.ticket | tojson }}
+
+        var paragrafo = data.map(function(ticket){
+            return '<p>' + ticket.descricao + '</p>';
+        })
+
+        document.body.innerHTML += paragrafo.join('');
+        console.table(data)
+
+    </script>
+
+</body>
+</html>
