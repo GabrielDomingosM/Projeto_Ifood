@@ -10,6 +10,7 @@ export default function App(){
     <NavigationContainer>
       <Stack.Navigator>
 
+        
         <Stack.Screen name="Login" component={Login}/>
         <Stack.Screen name="CadEntregadores" component={CadEntregador}/>
 
