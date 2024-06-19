@@ -13,6 +13,10 @@
     <input type="text" id="cnpj" placeholder="cnpj" name="cnpj"/>
     <input type="text" id="descricao" placeholder="descricao" name="descricao"/>
     <button id="btnSend">Enviar</button>
+    <br>
+    <input type="text" id="id" placeholder="id" name="id"/>
+    <button id="btnDelete">"Excluir"</button>
+    <p id="paragrafo_get"></p>
 </body>
 <script>
     function sendUser(){
@@ -40,6 +44,43 @@
         })
     }
 
+    //GET ----------------------------------------------
+    async function getRestaurante(){
+            const response = await fetch("http://localhost:300/restaurante",{
+                method: "GET",
+            });
+            const data = await response.json() //aguarda uma resposta do get antes de executar um script
+            const paragrafos = data.restaurante.map(function(restaurante){
+                return '<p>'
+                    'ㅤㅤ id :' + restaurante.id + 
+                    'ㅤㅤ nome :' + restaurante.nome + 
+                    'ㅤㅤ telefone :' + restaurante.telefone + 
+                    'ㅤㅤ endereco :' + restaurante.endereco +
+                    'ㅤㅤ cnpj :' + restaurante.cnpj +
+                    'ㅤㅤ descricao :' + restaurante.descricao + '</p>';
+            });
+
+            document.getElementById("paragrafo_get").innerHTML = paragrafos.join("");
+            console.log(data.restaurante)
+        }
+        getRestaurante()
+
+    //DELETE ----------------------------------------------
+    function excludeRestaurante(){
+            var id = document.getElementById('id').value
+        let data = {
+                id: id
+            };
+            const deleta = fetch("http://localhost:300/restaurante", {
+            method: "DELETE",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "Application/Json",
+            },
+          });
+        }
+
     document.getElementById('btnSend').addEventListener('click', () => sendUser())
+    document.getElementById('btnDelete').addEventListener('click', () => excludeRestaurante())
 </script>
 </html>

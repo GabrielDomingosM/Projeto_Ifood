@@ -24,3 +24,16 @@ def entregadorController():
         
         except Exception as erro:
             return 'Não foi possivel buscar as informações do entregador. Erro: {}'.format(str(erro)),405
+        
+    elif request.method == 'DELETE':
+         try:
+              data = request.get_json()
+              delete_entregador_id = data['id']
+              entregador = Entregador.query.get(delete_entregador_id)
+              if entregador is None:
+                   return{'error': 'entregador Não Enconrado'}, 404
+              db.session.delete(entregador)
+              db.session.commit()
+              return 'entregador deletado com sucesso.'
+         except Exception as e:
+              return 'O entregador não foi Atualizado. Erro: {}'.format(str(e)), 405

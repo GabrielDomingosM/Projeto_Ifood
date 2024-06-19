@@ -25,3 +25,16 @@ def usuarioController():
         
         except Exception as erro:
             return 'Não foi possivel buscar as informações do usuario. Erro: {}'.format(str(erro)),405
+        
+    elif request.method == 'DELETE':
+         try:
+              data = request.get_json()
+              delete_usuario_id = data['id']
+              usuario = usuario.query.get(delete_usuario_id)
+              if usuario is None:
+                   return{'error': 'Usuario não encontrado'}, 404
+              db.session.delete(usuario)
+              db.session.commit()
+              return 'Usuario deletado com sucesso.'
+         except Exception as e:
+              return 'O Usuario não foi Deletado. Erro: {}'.format(str(e)), 405

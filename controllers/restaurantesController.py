@@ -25,3 +25,16 @@ def restauranteController():
         
         except Exception as erro:
             return 'Não foi possivel buscar as informações do restaurante. Erro: {}'.format(str(erro)),405
+        
+    elif request.method == 'DELETE':
+         try:
+              data = request.get_json()
+              delete_restaurante_id = data['id']
+              restaurante = Restaurante.query.get(delete_restaurante_id)
+              if restaurante is None:
+                   return{'error': 'Ticket Não Enconrado'}, 404
+              db.session.delete(restaurante)
+              db.session.commit()
+              return 'restaurante deletado com sucesso.'
+         except Exception as e:
+              return 'O restaurante não foi Atualizado. Erro: {}'.format(str(e)), 405

@@ -12,6 +12,9 @@
     <input type="text" id="endereco" placeholder="endereco" name="endereco"/>
     <input type="text" id="telefone" placeholder="telefone" name="telefone"/>
     <button id="btnSend">Enviar</button>
+    <br>
+    <input type="text" id="id" placeholder="id" name="id"/>
+    <button id="btnDelete">"Excluir"</button>
 </body>
 <script>
     function sendUser(){
@@ -37,6 +40,22 @@
         })
     }
 
+    //DELETE ----------------------------------------------
+    function excludeUser(){
+            var id = document.getElementById('id').value
+        let data = {
+                id: id
+            };
+            const deleta = fetch("http://localhost:300/usuario", {
+            method: "DELETE",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "Application/Json",
+            },
+          });
+        }
+
     document.getElementById('btnSend').addEventListener('click', () => sendUser())
+    document.getElementById('btnDelete').addEventListener('click', () => excludeUser())
 </script>
 </html>
